@@ -78,4 +78,10 @@ Seletores
     - Seletores contextuais
         - Tem no XPath naturalmente
         - Playwright e Cypress permitem que possamos navegar pela árvore de elementos sem uso do XPath
-        
+
+Apesar da pirâmide de testes, para aplicações web, é muito comum se usar o modelo do troféu de testes
+    ------ e2e -------
+    --- integration --
+    ----- unit -------
+    ------ static ----
+    - O Cypress é muito usado para e2e, simulando ações do usuário de ponta a ponta, e integração

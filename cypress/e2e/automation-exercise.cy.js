@@ -6,6 +6,9 @@
 // it - teste abcd...
 
 /// <reference types="cypress" />
+import dadosUsuarios from '../fixtures/dadosUsuario.json'
+
+const nome = dadosUsuarios.nome;
 
 describe('Automation exercise', () => {
     beforeEach(() => {
@@ -27,7 +30,7 @@ describe('Automation exercise', () => {
         // para id, usamos o #
         // para classe, usamos o .
         // para atributos, usamos [var=nomeVar], e é possível concatenar os seletores para filtrar a buscar
-        cy.get('input[data-qa="signup-name"]').type('qa nome');
+        cy.get('input[data-qa="signup-name"]').type(nome);
         // cy.get('input[data-qa="signup-email"]').type('qa_criar_user@mail.com');
         // Esse teste daria um erro a partir da segunda execução, pois o email já está sendo usado
         // Uma forma de evitar isso é usando a lib faker, outra fora é concatenar com o timestamp
@@ -84,8 +87,6 @@ describe('Automation exercise', () => {
         cy.get('input[data-qa="login-password"]').type('qa123456'); 
 
         cy.get('button[data-qa="login-button"]').click();
-
-        var nome = 'qa nome';
 
         cy.get('a[href="/logout"]').should('be.visible');
         cy.contains('b', nome);

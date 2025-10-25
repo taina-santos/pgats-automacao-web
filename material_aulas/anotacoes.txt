@@ -130,4 +130,13 @@ Debugging e análise de falhas
         - Command timeout
         - Cannot read property of undefined
         - cy.visit failed
-        
+
+Organização e separação de responsabilidades
+    - Fixtures: recurso para colocar funcionalidades separadamente e reusá-la nos scripts, havendo separação de dados e lógica dos testes
+        - Costuma se colocar também arquivos a serem usados pelos testes
+        - Pode ser chamado de data ou similar em outros projetos, caso não haja fixture
+        - Sobre cy.fixture: obter uma informação usando esse comando e usá-la posteriormente
+            - O problema disso que se mudar de ferramenta, isso precisará ser reescrito
+            - Recomendado o uso quando há uso de imagens ou documentos
+    - Dados hardcoded: dados fixos no código, sem geração dinâmica
+    - Dados externos

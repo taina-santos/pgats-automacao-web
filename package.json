@@ -1,0 +1,23 @@
+{
+  "name": "pgats-automacao-web",
+  "version": "1.0.0",
+  "description": "Projeto focado no material registrado durante a disciplina de automação de testes na camada de interface web do PGATS, entre conceitos e exercícios feitos em aula",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taina-santos/pgats-automacao-web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taina-santos/pgats-automacao-web/issues"
+  },
+  "homepage": "https://github.com/taina-santos/pgats-automacao-web#readme",
+  "devDependencies": {
+    "cypress": "^13.7.3"
+  }
+}

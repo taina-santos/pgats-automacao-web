@@ -1,0 +1,104 @@
+-- SEMANA 01
+
+HTML, CSS e JS
+    - HTML é a estrutura e semântica da página (o esqueleto)
+        - O conteúdo é definido por blocos de construção
+    - CSS é o visual
+        - É uma linguagem de estilo usada para descrever apresentação de um documento escrito em HTML
+    - JS é responsável pelo comportamento da página
+    - Ajax é o JS que faz requisição para um serviço BE
+    - DOM é o HTML renderizado na tela
+
+Browser engines: quais navegadores vamos testar, se vamos testar em múltiplos browsers
+    - Chromium: a que mais tem usuários, como chrome, microsfot edge, etc
+    - Gecko: da mozilla, utilizado pelo firefox
+    - WebKit: utilizado pelo safari
+    - Tem outros, mas são menos usados
+        - IE usava trident, mas migrou para o chromium quando foi para o edge
+Estilos de design
+    - Responsivo: ela se ajusta ao espaço disponível para exibição da tela, a partir da marcação de tamanho
+    - Adaptativo: o design não se altera quando se diminui/aumenta a exibição da tela, mas ela será modificada ao atualizar/recarregar a página
+Elementos de uma WebApp
+    - Componentes
+    - Páginas: um conjunto de componentes
+    - Layouts (cabeçalho/rodapé): acompanha a página independente de onde estiver
+        - Evita duplicação de teste
+    - Rotas: URLs das páginas
+    - Estados: status dos componentes (se está selecionado, não selecionado, mouse over, etc), geralmente usado em teste de componente, mas importante para e2e
+    - Comunicação com API/BE
+    - Assets: todos os arquivos de mídia na aplicação (ícone, imagem, fontes, vídeo)
+Eventos
+    - Interações com a aplicação web:
+        - Clique
+        - Digitar
+        - Passar sobre (hover)
+        - Navegar pra cima/baixo (scroll)
+Dados no browser
+    - Armazenamento
+        - Cookies
+        - Storage
+            - Sessão
+            - Local
+
+Automação de testes web
+    - Três principais arquiteturas
+        - Baseado no protocolo webdriver (Selenium, webdriver.io)
+            - O webdriver age como um meio de campo entre o código e o navegador
+            - Pro: suporte a diferentes browsers
+            - Cons: como roda de forma externa ao browser, então dificulta acesso a funções internas da aplicação
+        - Baseado no CDP (Chrome DevTools Protocol) (Puppeteer, playwright)
+            - A comunicação é feita direto com o API do navegador
+            - Costuma ter melhor performance
+            - Usa websocket, então ele funciona quase que em tempo real
+            - Pro: acesso a API dos navegadores
+            - Cons: não está na W3C, o que demora a adesão da ferramenta pela comunidade
+        - JS no navegador (Cypress)
+            - Cons: é um desafio tornar compatível com múltiplos browsers
+            - Ele roda direto no navegador, sem API ou webdriver
+    - Novo protocolo: webdriver bidi
+        - Usa comunicação websocket
+        - Segue padrão da W3C
+        - Tipo webdriver 2.0
+
+Seletores
+    - Seletor é um filtro
+    - CSS Selector é o filtro num arquivo HTML
+        - As tags (button, table, input)
+        - Classe
+        - ID (#botao-login)
+        - Atributo ([placeholder="Entrar"], [id="test"], [class="inputtext"], etc)
+        - Universais
+        - Dedicados a testes ([test-id="tst-login-button"])
+    - XPath é o filtro num arquivo XML, e a página HTML é um XML padronizado
+        - Possibilidade de navegação a partir de uma âncora (axes), muito usado quando a página não está bem estruturada
+        - XPath tem funções também, e é possível a partir dela usar text() e contains()
+            - O cy.contains() faz o mesmo do contains()
+        - XPath é MUITO usado na automação mobile, pois não tem a estrutura do CSS Selector
+        - Cons: A velocidade de processamento é um pouco menor que o do CSS Selector, mas a diferença é quase irrelevante
+    - Seletores contextuais
+        - Tem no XPath naturalmente
+        - Playwright e Cypress permitem que possamos navegar pela árvore de elementos sem uso do XPath
+
+Apesar da pirâmide de testes, para aplicações web, é muito comum se usar o modelo do troféu de testes
+    ------ e2e -------
+    --- integration --
+    ----- unit -------
+    ------ static ----
+    - O Cypress é muito usado para e2e, simulando ações do usuário de ponta a ponta, e integração
+
+Existem dois tipos de esperas:
+    - Implícita
+        - Esperas relacionadas ao tempo, onde a ferramenta aguardará o tempo máximo para executar o comando
+        - Configuração global da ferramenta ou do comando, que pode ser definido previamente
+    - Explícita
+        - Condição para a ferramenta aguardar antes de prosseguir com a ação
+    - Automática
+        - Alguns comandos já possuem espera automática, como click, get, check
+
+Screenshots
+    - Screenshots podem ser gerados quando há falha, a cada passo ou durante o teste
+    - O uso de screeshots pode ser feito para validar ou verificar onde houve o erro
+
+Teste headless
+    - Execução do teste no navegador sem que ele abra
+    - Utilizado durante execução na pipeline

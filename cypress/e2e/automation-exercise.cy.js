@@ -7,6 +7,7 @@
 
 /// <reference types="cypress" />
 import dadosUsuarios from '../fixtures/dadosUsuario.json'
+import contactUsFields from '../fixtures/contactUs.json'
 
 const nome = dadosUsuarios.nome;
 
@@ -116,5 +117,24 @@ describe('Automation exercise', () => {
         
         cy.get('button[data-qa="signup-button"]').click();
         cy.get('.signup-form > form > p').should('contain', 'Email Address already exist!');
+    });
+
+    it.only('Enviar formulário de contato com upload de arquivo na página de contact us', () => {
+        cy.get('a[href="/contact_us"]').click();
+        // Eu posso usar * como coringa para fazer buscar de um elemento
+        // cy.get('a[href*=contact]').click();
+
+        cy.get('input[data-qa="name"]').type(contactUsFields.name);
+        cy.get('input[data-qa="email"]').type(contactUsFields.email);
+        cy.get('input[data-qa="subject"]').type(contactUsFields.subject);
+        cy.get('textarea[data-qa="message"]').type(contactUsFields.message);
+
+        cy.fixture('example.json').as('arquivo');
+        cy.get('input[type="file"]').selectFile('@arquivo');
+
+        cy.get('input[data-qa="submit-button"]').click();
+
+        cy.get('.status').should('be.visible');
+        cy.get('.status').should('have.text', 'Success! Your details have been submitted successfully.');
     });
 });

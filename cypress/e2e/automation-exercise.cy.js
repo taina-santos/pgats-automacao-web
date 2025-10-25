@@ -8,13 +8,18 @@
 /// <reference types="cypress" />
 
 describe('Automation exercise', () => {
+    beforeEach(() => {
+        cy.visit('https://automationexercise.com/');
+        cy.get('a[href="/login"]').click();
+    });
+
     it('Cadastrar usuário', () => {
         const timestamp = new Date().getTime();
 
-        cy.visit('https://automationexercise.com/');
+        // cy.visit('https://automationexercise.com/');
 
         // encontrando o elemento pelo seletor
-        cy.get('a[href="/login"]').click();
+        // cy.get('a[href="/login"]').click();
 
         // encontrando o elemento pelo texto
         // cy.contains('Signup / Login').click();
@@ -71,9 +76,9 @@ describe('Automation exercise', () => {
     });
 
     it('Login com sucesso', () => {
-        cy.visit('https://automationexercise.com/');
+        // cy.visit('https://automationexercise.com/');
 
-        cy.get('a[href="/login"]').click();
+        // cy.get('a[href="/login"]').click();
         //login-email@mail.com
         cy.get('input[data-qa="login-email"]').type('login-email@mail.com');
         cy.get('input[data-qa="login-password"]').type('qa123456'); 
@@ -89,9 +94,9 @@ describe('Automation exercise', () => {
     });
 
     it('Login com dados inválidos', () => {
-        cy.visit('https://automationexercise.com/');
+        // cy.visit('https://automationexercise.com/');
 
-        cy.get('a[href="/login"]').click();
+        // cy.get('a[href="/login"]').click();
         //login-email@mail.com
         cy.get('input[data-qa="login-email"]').type('login-email@mail.com');
         cy.get('input[data-qa="login-password"]').type('qa1234'); 
@@ -101,9 +106,9 @@ describe('Automation exercise', () => {
     });
 
     it('Cadastrar email existente', () => {
-        cy.visit('https://automationexercise.com/');
+        // cy.visit('https://automationexercise.com/');
 
-        cy.get('a[href="/login"]').click();
+        // cy.get('a[href="/login"]').click();
 
         cy.get('input[data-qa="signup-name"]').type('qa nome');
         cy.get('input[data-qa="signup-email"]').type('qa-criar-user-email-existente@mail.com');

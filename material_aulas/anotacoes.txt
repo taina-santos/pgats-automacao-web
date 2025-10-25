@@ -102,3 +102,10 @@ Screenshots
 Teste headless
     - Execução do teste no navegador sem que ele abra
     - Utilizado durante execução na pipeline
+
+Refatoração
+    - Hooks: coisas que quero que sejam executadas antes ou depois dos testes
+        - before -> 1x antes de todos os testes
+        - beforeEach -> antes de cada teste
+        - after -> 1x depois de todos os testes
+        - afterEach -> depois de cada teste

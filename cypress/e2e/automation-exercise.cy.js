@@ -27,7 +27,7 @@ describe('Automation exercise', () => {
         // Esse teste daria um erro a partir da segunda execução, pois o email já está sendo usado
         // Uma forma de evitar isso é usando a lib faker, outra fora é concatenar com o timestamp
         cy.get('input[data-qa="signup-email"]').type(`qa-criar-user-${timestamp}@mail.com`);
-
+        
         // cy.contains('Signup').click();
         // Daria erro pois há mais de um elemento que contém a string Signup
         // Caso eu queira ser específico, eu posso fazer mix do conceito do texto com o seletor, onde o seletor age como um filtro
@@ -68,5 +68,47 @@ describe('Automation exercise', () => {
         cy.url().should('includes', 'account_created');
         cy.contains('b', 'Account Created!');
         cy.get('h2[data-qa="account-created"]').should('have.text', 'Account Created!');
+    });
+
+    it('Login com sucesso', () => {
+        cy.visit('https://automationexercise.com/');
+
+        cy.get('a[href="/login"]').click();
+        //login-email@mail.com
+        cy.get('input[data-qa="login-email"]').type('login-email@mail.com');
+        cy.get('input[data-qa="login-password"]').type('qa123456'); 
+
+        cy.get('button[data-qa="login-button"]').click();
+
+        var nome = 'qa nome';
+
+        cy.get('a[href="/logout"]').should('be.visible');
+        cy.contains('b', nome);
+        cy.contains(`Logged in as ${nome}`).should('be.visible');
+
+    });
+
+    it('Login com dados inválidos', () => {
+        cy.visit('https://automationexercise.com/');
+
+        cy.get('a[href="/login"]').click();
+        //login-email@mail.com
+        cy.get('input[data-qa="login-email"]').type('login-email@mail.com');
+        cy.get('input[data-qa="login-password"]').type('qa1234'); 
+
+        cy.get('button[data-qa="login-button"]').click();
+        cy.get('.login-form > form > p').should('contain', 'Your email or password is incorrect!');
+    });
+
+    it('Cadastrar email existente', () => {
+        cy.visit('https://automationexercise.com/');
+
+        cy.get('a[href="/login"]').click();
+
+        cy.get('input[data-qa="signup-name"]').type('qa nome');
+        cy.get('input[data-qa="signup-email"]').type('qa-criar-user-email-existente@mail.com');
+        
+        cy.get('button[data-qa="signup-button"]').click();
+        cy.get('.signup-form > form > p').should('contain', 'Email Address already exist!');
     });
 });

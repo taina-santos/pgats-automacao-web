@@ -8,6 +8,7 @@
 /// <reference types="cypress" />
 import dadosUsuarios from '../fixtures/dadosUsuario.json'
 import contactUsFields from '../fixtures/contactUs.json'
+import { newRandomUser, signUpForm } from '../support/helpers'
 
 const nome = dadosUsuarios.nome;
 
@@ -17,8 +18,8 @@ describe('Automation exercise', () => {
         cy.get('a[href="/login"]').click();
     });
 
-    it('Cadastrar usuário', () => {
-        const timestamp = new Date().getTime();
+    it.only('Cadastrar usuário', () => {
+        // const timestamp = new Date().getTime();
 
         // cy.visit('https://automationexercise.com/');
 
@@ -31,11 +32,13 @@ describe('Automation exercise', () => {
         // para id, usamos o #
         // para classe, usamos o .
         // para atributos, usamos [var=nomeVar], e é possível concatenar os seletores para filtrar a buscar
-        cy.get('input[data-qa="signup-name"]').type(nome);
+        // cy.get('input[data-qa="signup-name"]').type(nome);
+        cy.get('input[data-qa="signup-name"]').type(signUpForm().signUpName);
         // cy.get('input[data-qa="signup-email"]').type('qa_criar_user@mail.com');
         // Esse teste daria um erro a partir da segunda execução, pois o email já está sendo usado
         // Uma forma de evitar isso é usando a lib faker, outra fora é concatenar com o timestamp
-        cy.get('input[data-qa="signup-email"]').type(`qa-criar-user-${timestamp}@mail.com`);
+        // cy.get('input[data-qa="signup-email"]').type(`qa-criar-user-${timestamp}@mail.com`);
+        cy.get('input[data-qa="signup-email"]').type(signUpForm().email);
         
         // cy.contains('Signup').click();
         // Daria erro pois há mais de um elemento que contém a string Signup
@@ -59,14 +62,14 @@ describe('Automation exercise', () => {
         cy.get('input[type=checkbox]#newsletter').check();
         cy.get('input[type=checkbox]#optin').check();
 
-        cy.get('input#first_name').type('qa test');
-        cy.get('input#last_name').type(`${timestamp}`);
-        cy.get('input#address1').type('123 tralala ave');
-        cy.get('select#country').select('Canada');
-        cy.get('input#state').type('ont');
-        cy.get('input#city').type('hamilton');
-        cy.get('input#zipcode').type('R0R 0R0');
-        cy.get('input#mobile_number').type('222 111 1234');
+        cy.get('input#first_name').type(newRandomUser().firstName);
+        cy.get('input#last_name').type(newRandomUser().lastName);
+        cy.get('input#address1').type(newRandomUser().address);
+        cy.get('select#country').select('United States');
+        cy.get('input#state').type(newRandomUser().state);
+        cy.get('input#city').type(newRandomUser().city);
+        cy.get('input#zipcode').type(newRandomUser().zCode);
+        cy.get('input#mobile_number').type(newRandomUser().mobileNumber);
 
         cy.get('button[data-qa="create-account"]').click();
 
@@ -119,7 +122,7 @@ describe('Automation exercise', () => {
         cy.get('.signup-form > form > p').should('contain', 'Email Address already exist!');
     });
 
-    it.only('Enviar formulário de contato com upload de arquivo na página de contact us', () => {
+    it('Enviar formulário de contato com upload de arquivo na página de contact us', () => {
         cy.get('a[href="/contact_us"]').click();
         // Eu posso usar * como coringa para fazer buscar de um elemento
         // cy.get('a[href*=contact]').click();

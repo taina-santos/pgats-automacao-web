@@ -140,3 +140,8 @@ Organização e separação de responsabilidades
             - Recomendado o uso quando há uso de imagens ou documentos
     - Dados hardcoded: dados fixos no código, sem geração dinâmica
     - Dados externos
+
+Funções utilitárias e auxiliares
+    - Posso usar para delegar lógicas a essas funções e focar apenas nos testes
+    - Eles ficam na pasta de support na estrutura do cypress
+    - Podemos usar o faker para gerar dados dinâmicos e chamar nos nossos testes

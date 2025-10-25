@@ -103,9 +103,31 @@ Teste headless
     - Execução do teste no navegador sem que ele abra
     - Utilizado durante execução na pipeline
 
+-- SEMANA 02
+
 Refatoração
     - Hooks: coisas que quero que sejam executadas antes ou depois dos testes
         - before -> 1x antes de todos os testes
         - beforeEach -> antes de cada teste
         - after -> 1x depois de todos os testes
         - afterEach -> depois de cada teste
+
+Debugging e análise de falhas
+    - Logs
+        - Logs nos testes com cy.log
+        - Logs no terminal
+        - Logs no navegador (console.log)
+        - É possível salvar o resultado do modo headless num arquivo txt
+            - npx cyress run > nome-arquivo.txt
+    - Screenshots e vídeos
+        - cy.screeshot
+        - config pra gerar vídeo
+        - screeshots das falhas
+    - StackTrace
+    - Principais motivos de falha
+        - Element not found
+        - Assertion error
+        - Command timeout
+        - Cannot read property of undefined
+        - cy.visit failed
+        

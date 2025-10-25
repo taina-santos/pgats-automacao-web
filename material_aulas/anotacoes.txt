@@ -85,3 +85,20 @@ Apesar da pirâmide de testes, para aplicações web, é muito comum se usar o m
     ----- unit -------
     ------ static ----
     - O Cypress é muito usado para e2e, simulando ações do usuário de ponta a ponta, e integração
+
+Existem dois tipos de esperas:
+    - Implícita
+        - Esperas relacionadas ao tempo, onde a ferramenta aguardará o tempo máximo para executar o comando
+        - Configuração global da ferramenta ou do comando, que pode ser definido previamente
+    - Explícita
+        - Condição para a ferramenta aguardar antes de prosseguir com a ação
+    - Automática
+        - Alguns comandos já possuem espera automática, como click, get, check
+
+Screenshots
+    - Screenshots podem ser gerados quando há falha, a cada passo ou durante o teste
+    - O uso de screeshots pode ser feito para validar ou verificar onde houve o erro
+
+Teste headless
+    - Execução do teste no navegador sem que ele abra
+    - Utilizado durante execução na pipeline

@@ -203,3 +203,14 @@ Relatórios
     - Pode passar a visão resumida dos resultados
     - Pode ser gerado em txt, json ou xml
     - Uma ideia é usar o cypress-mochawesome-report
+
+Janelas e drag and drop
+    - Janelas/abas são muito usadas para efetuar recursos ou redirecionar para sites externos
+    - Drag and drop é a ação de arrastar um elemento de uma área para outra, o Trello usa muito (o jira também tem essa funcionalidade)
+    - O cypress lida com isso através do trigger, que dispara um evento do dom
+    - Para múltiplas janelas, a característica dela é o atributo "target"
+        - No selenium tem o switchTo para trabalhar com uma janela aberta
+        - No cypress, a gente usa invoke para executar funções no navegador, incluindo remover atributo do html
+            - Para voltar a janela anterior, a gente usa cy.go('back')
+    - Para drag and drop, a gente usa o data transfer, mas tem plugins para isso também, como cypress-drag-drop
+        - No cypress, a gente cria uma instâcia do data transfer, chama a função de trigger para o atributo e passa o data transfer como valor

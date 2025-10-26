@@ -19,6 +19,7 @@
   "homepage": "https://github.com/taina-santos/pgats-automacao-web#readme",
   "devDependencies": {
     "@faker-js/faker": "^9.9.0",
-    "cypress": "^13.7.3"
+    "cypress": "^13.7.3",
+    "cypress-mochawesome-reporter": "^4.0.2"
   }
 }

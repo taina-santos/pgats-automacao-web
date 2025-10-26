@@ -198,3 +198,8 @@ Comandos customizados
     - O porém é que tudo ficaria nesse arquivo, e a medida que o projeto for expandindo, ele pode se tornar custoso de entender e manter
     - Além de que pode confundir com comandos nativos para cypress
     - Nem tudo precisa ser um comando customizado, modularização pode ser uma melhor alternativa
+
+Relatórios
+    - Pode passar a visão resumida dos resultados
+    - Pode ser gerado em txt, json ou xml
+    - Uma ideia é usar o cypress-mochawesome-report

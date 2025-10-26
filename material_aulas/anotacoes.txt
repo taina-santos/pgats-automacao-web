@@ -145,3 +145,56 @@ Funções utilitárias e auxiliares
     - Posso usar para delegar lógicas a essas funções e focar apenas nos testes
     - Eles ficam na pasta de support na estrutura do cypress
     - Podemos usar o faker para gerar dados dinâmicos e chamar nos nossos testes
+
+Módulos e páginas
+    - O mais comum da automação web é que dividamos os scripts em módulos ou páginas ou funcionalidades
+    - Usando o automation exercise como exemplo:
+        - menu (header/footer)
+            - navegar para um menu específico
+        - carrinho
+            - proceder para o checkout
+            - remover produto
+            - adicionar/diminuir quantidade
+            - navegar para detalhe do produto que está presente no carrinho
+        - login
+            - login com sucesso
+            - preencher form de cadastro
+        - cadastro
+            - preencher o form de cadastro completo
+        - contato
+            - preencher form de contato
+            - fazer upload de arquivo
+        - produtos
+            - pesquisar produto
+            - filtrar produto
+            - adicionar produto no carrinho
+            - ver detalhe do produto
+    - Num teste e2e, eu posso passar por vários desses módulos e mesclar ações
+        - Nesse caso, faz sentido dividir por módulos
+        - Facilita o reuso do código, chamando em diversos cenários
+        - exemplo de fluxo:
+            1. login -> preenchi form de login
+            2. produto -> filtrei por categoria
+            3. produto -> adicionei no carrinho um produto
+            4. carrinho -> prossegui para o checkout
+
+            1. login -> preenchi form de login
+            2. produto -> pesquisei por um produto
+            3. produto -> adicionei no carrinho um produto
+            4. carrinho -> prossegui para o checkout
+        - Antigamente, a galera usava muito POM como organização do projeto
+            - Hoje em dia se pensa em modularizar apenas o necessário
+        - Podemos organizar com:
+            - function
+            - comandos customizados
+            - classes
+    - Não confundir módulos com POM
+        - App actions vale ser usado quando há contato com o código fonte da aplicação
+        - Quando não há contato, podemos usar modularização
+    - A convenção geralmente é de que ações do teste a gente abstrai (modularização), asserções dos teste, a gente mantém no arquivo de teste
+
+Comandos customizados
+    - Serve para expandir a api da ferramente, sendo acessível através do cy 
+    - O porém é que tudo ficaria nesse arquivo, e a medida que o projeto for expandindo, ele pode se tornar custoso de entender e manter
+    - Além de que pode confundir com comandos nativos para cypress
+    - Nem tudo precisa ser um comando customizado, modularização pode ser uma melhor alternativa

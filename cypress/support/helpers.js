@@ -33,7 +33,7 @@ export function newRandomUser(){
 
 export function signUpForm(){
     return {
-        signUpName: faker.person.firstName(),
+        name: faker.person.firstName(),
         email: faker.internet.email()
     };
 }

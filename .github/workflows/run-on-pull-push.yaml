@@ -23,3 +23,14 @@ jobs:
       
       - name: Rodando os testes no cypress headless
         run: npx cypress run
+      
+      - name: Fazendo upload do resultado dos testes
+        uses: actions/upload-artifact@v4
+        # Isso aqui vai rodar independente dos erros e acertos, a não ser que o job seja cancelado
+        if: ${{ !cancelled() }}
+        with:
+          name: Relatórios gerados
+          path: |
+            cypress/reports
+            cypress/screenshots
+            cypress/videos

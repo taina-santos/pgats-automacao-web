@@ -37,4 +37,3 @@ export function signUpForm(){
         email: faker.internet.email()
     };
 }
-require('browserstack-cypress-cli/bin/testObservability/cypress');

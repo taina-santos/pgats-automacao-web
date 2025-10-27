@@ -216,4 +216,11 @@ Janelas e drag and drop
         - No cypress, a gente cria uma instâcia do data transfer, chama a função de trigger para o atributo e passa o data transfer como valor
 
 Integração na pipeline
-    - O mesmo feito anteriormente
+    - O mesmo feito anteriormente em outras disciplinas
+    - No cypress.config a gente pode adicionar um bloco com a quantidade de vezes que podemos tentar reexecutar os testes
+    - Podemos usar matrix também para executar diferentes configurações
+        matrix:
+            version: [n, n+1, n+2, ...]
+            os: [ubuntu-latest, windows-latest]
+    - Também podemos usar github pages para publicar em algum lugar específico
+        - Também podemos integrar com slack, fazer upload no drive, etc

@@ -224,3 +224,13 @@ Integração na pipeline
             os: [ubuntu-latest, windows-latest]
     - Também podemos usar github pages para publicar em algum lugar específico
         - Também podemos integrar com slack, fazer upload no drive, etc
+
+AI
+    - TestCraft é um plugin que colocamos no navegador e ele gera os testes para aquela página
+
+Execução de teste nas nuvens
+    - Colocar os testes numa infraestrutura com mais variadas configurações
+    - Auxiliam a escalabilidade e infraestrutura
+    - BrowserStack é um exemplo
+        - Podemos usar tanto para teste manual como automação (mobile e web)
+        

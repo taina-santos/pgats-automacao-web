@@ -1,0 +1,22 @@
+name: 'Executando o job manualmente'
+
+on:
+  workflow_dispatch:
+
+jobs:
+  web-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Baixando o node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+      
+      - name: Instalando dependências
+        run: npm install
+
+      - name: Rodando os testes no cypress headless
+        run: npx cypress run

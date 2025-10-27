@@ -6,9 +6,9 @@
 // it - teste abcd...
 
 /// <reference types="cypress" />
-import dadosUsuarios from '../fixtures/dadosUsuario.json'
-import contactUsFields from '../fixtures/contactUs.json'
-import { newRandomUser, signUpForm } from '../support/helpers'
+import dadosUsuarios from '../cypress/fixtures/dadosUsuario.json'
+import contactUsFields from '../cypress/fixtures/contactUs.json'
+import { newRandomUser, signUpForm } from '../cypress/support/helpers'
 
 const nome = dadosUsuarios.nome;
 

@@ -214,3 +214,6 @@ Janelas e drag and drop
             - Para voltar a janela anterior, a gente usa cy.go('back')
     - Para drag and drop, a gente usa o data transfer, mas tem plugins para isso também, como cypress-drag-drop
         - No cypress, a gente cria uma instâcia do data transfer, chama a função de trigger para o atributo e passa o data transfer como valor
+
+Integração na pipeline
+    - O mesmo feito anteriormente

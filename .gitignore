@@ -1,3 +1,11 @@
 /node_modules
 /cypress/screenshots
 /cypress/reports
+/cypress/videos
+/tmpBstackPackages/
+/tests.zip
+/npm_install_debug.log
+/bstackPackages.tar.gz
+/log
+/browserstack.json
+/results
